@@ -1,5 +1,9 @@
 # sikerja-os-pemdes
 
-YANG PAHAM SILAHKAN DI TINDAK LANJUTIN, MAY BE DISINI BISA DIKASIH TGL UPDATE YG DIKERJAIN DAN YANG DI UPDATE ITU APA
-MOHON MAAF DI SOURCE CODE AKU BELUM ADA KASIH KOMENTAR,
-#ERMA
+## **Features**
+
+## **Things to do First**
+
+## **How to Reproduce Dev Environment**
+
+## **How to Deploy**

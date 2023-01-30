@@ -1,0 +1,7 @@
+div {
+    margin: 1rem;
+}
+
+.active {
+    border: 1px solid red;
+}

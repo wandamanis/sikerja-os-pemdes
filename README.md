@@ -3,6 +3,34 @@
 ## **Features**
 
 ## **Things to do First**
+1. Fetch all files & folder from git
+2. Open directory using terminal
+3. Create ``.env`` by copying from example
+```
+cp ./.env.example .env
+```
+4. Edit ``.env`` by change database connection configuration at ``DB_DATABASE``, ``DB_USERNAME``, and ``DB_PASSWORD``
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE= <DATABASE_NAME>
+DB_USERNAME= <USERNAME>
+DB_PASSWORD= <PASSWORD>
+```
+5. Update using ``composer``
+```
+composer update
+```
+6. Migrating and seeding data
+```
+php artisan migrate
+php artisan db:seed
+```
+7. Run project using ``artisan``
+```
+php artisan serve
+```
 
 ## **How to Reproduce Dev Environment**
 
@@ -41,4 +69,8 @@ sudo systemctl restart apache2
 9. Install ``MySQL``
 ```
 sudo apt install mysql-server -y
+```
+10. Install Database Manager
+```
+sudo mysql_secure_installation
 ```

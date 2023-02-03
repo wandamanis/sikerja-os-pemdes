@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\VarDumper\VarDumper;
 
 class KinerjaController extends Controller
 {
@@ -90,16 +91,29 @@ class KinerjaController extends Controller
      * @param  \App\Http\Requests\StoreKinerjaRequest  $request
      * @return \Illuminate\Http\Response
      */
+
+    function hitung_jam_kerja($waktuMulai, $waktuSelesai) {
+        $format = "Y-m-d H:i";
+        $timestampMulai = date_create_from_format($format, $waktuMulai)->getTimestamp();
+        $timestampSelesai = date_create_from_format($format, $waktuSelesai)->getTimestamp();
+        return $timestampSelesai - $timestampMulai;
+    }      
+
     public function store(Request $request)
     {
         if (auth()->guest()) {
             abort(403);
         }
-        $tgl_sever = now();
-        $waktu_mulai = $request->get('tgl_mulai') + " " + $request->get('jam_mulai');
-        $waktu_selesai = $request->get('tgl_selesai') + " " + $request->get('jam_selesai');
+        
+        $waktuMulai = $request->get('tgl_mulai') . " " . $request->get('jam_mulai');
+        $waktuSelesai = $request->get('tgl_selesai') . " " . $request->get('jam_selesai');
 
-        $diff = $waktu_selesai - $waktu_mulai;
+        $jamKerja = $this->hitung_jam_kerja($waktuMulai, $waktuSelesai);
+        
+        if ($jamKerja < 0) {
+            return redirect()->back()->withInput()->with('danger', 'Waktu selesai tidak boleh kurang dari waktu mulai');
+        }
+        
         $validatedData['id_user'] = auth()->user()->id;
         $validatedData['id_sub'] = auth()->user()->id_sub;
         $validatedData['id_status'] = $request->get('id_status');

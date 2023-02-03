@@ -79,7 +79,7 @@
                                                 data-target-input="nearest" data-placement="top" data-align="top"
                                                 data-autoclose="true"> --}}
                                                 <input type="time" class="form-control"
-                                                    name="jam_mulai" id="jam_mulai" value="{{ old('jam_mulai') }}" max="<?=strftime('%H:%M:%S')?>" />
+                                                    name="jam_mulai" id="jam_mulai" value="{{ old('jam_mulai') }}"  />
                                                 {{-- <div class="input-group-append" data-target="#clock"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="far fa-clock"></i>
@@ -98,7 +98,7 @@
                                                 data-target-input="nearest" data-placement="top" data-align="top"
                                                 data-autoclose="true"> --}}
                                                 <input type="time" class="form-control"
-                                                    name="jam_selesai" id="jam_selesai" value="{{ old('jam_selesai') }}" max="<?=strftime('%H:%M:%S')?>" />
+                                                    name="jam_selesai" id="jam_selesai" value="{{ old('jam_selesai') }}"  />
                                                 {{-- <div class="input-group-append" data-target="#clock"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="far fa-clock"></i>

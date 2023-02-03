@@ -92,6 +92,12 @@ class KinerjaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    function validasi_time_traveller($waktu){
+        $format = "Y-m-d H:i";
+        $inputTimestamp = date_create_from_format($format, $waktu)->getTimestamp();
+        return $inputTimestamp > time();
+    }
+    
     function hitung_jam_kerja($waktuMulai, $waktuSelesai) {
         $format = "Y-m-d H:i";
         $timestampMulai = date_create_from_format($format, $waktuMulai)->getTimestamp();
@@ -110,6 +116,10 @@ class KinerjaController extends Controller
 
         $jamKerja = $this->hitung_jam_kerja($waktuMulai, $waktuSelesai);
         
+        if ($this->validasi_time_traveller($waktuMulai) || $this->validasi_time_traveller($waktuSelesai)) {
+            return redirect()->back()->withInput()->with('danger', 'Waktu yang diinput tidak boleh melebihi waktu sekarang');
+        }
+
         if ($jamKerja < 0) {
             return redirect()->back()->withInput()->with('danger', 'Waktu selesai tidak boleh kurang dari waktu mulai');
         }

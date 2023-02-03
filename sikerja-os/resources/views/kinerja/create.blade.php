@@ -28,6 +28,10 @@
                                 <div class="alert alert-success col-lg-8" role="alert">
                                     {{ session('success') }}
                                 </div>
+                            @elseif (session()->has('danger'))
+                                <div class="alert alert-danger col-lg-8" role="alert">
+                                    {{ session('danger') }}
+                                </div>
                             @endif
                         </div>
                         <div class="card-body">
@@ -36,8 +40,7 @@
                                 <input type="hidden" name="id_status" value="1">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Kegiatan Harian</label>
-                                    <textarea class="form-control" rows="3" placeholder="Isi Kegiatan Harian" name="kinerja" required autofocus
-                                        value="{{ old('kinerja') }}" id="kinerja"></textarea>
+                                    <textarea class="form-control" rows="3" placeholder="Isi Kegiatan Harian" name="kinerja" required autofocus id="kinerja">{{ old('kinerja') }}</textarea>
                                     @error('kinerja')
                                         <div class="invalid-feedback">
                                             <p class="text-danger"> {{ $message }}</p>
@@ -49,7 +52,7 @@
                                         <div class="col-md-6">
                                             <label>Tanggal Mulai</label>
                                             <div class="input-group" data-target-input="nearest">
-                                                <input type="date" class="form-control" name="tgl_mulai" id="tgl_mulai" max="<?=date('Y-m-d')?>"/>
+                                                <input type="date" class="form-control" name="tgl_mulai" id="tgl_mulai" max="<?=date('Y-m-d')?>" value="{{ old('tgl_mulai') }}"/>
                                             </div>
                                             @error('tgl_mulai')
                                                 <div class="invalid-feedback">
@@ -60,7 +63,7 @@
                                         <div class="col-md-6">
                                             <label>Tanggal Selesai</label>
                                             <div class="input-group" data-target-input="nearest">
-                                                <input type="date" class="form-control" name="tgl_selesai"id="tgl_selesai" max="<?=date('Y-m-d')?>" />
+                                                <input type="date" class="form-control" name="tgl_selesai"id="tgl_selesai" max="<?=date('Y-m-d')?>" value="{{ old('tgl_selesai') }}" />
                                             </div>
                                             @error('tgl_selesai')
                                                 <div class="invalid-feedback">

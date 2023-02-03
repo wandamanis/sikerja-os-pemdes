@@ -133,6 +133,9 @@ class KinerjaController extends Controller
         $validatedData['jam_mulai'] = $request->get('jam_mulai');
         $validatedData['jam_selesai'] = $request->get('jam_selesai');
         if ($request->hasFile('file')) {
+            $request->validate([
+                'file' => 'mimes:jpeg,png,jpg,pdf',
+            ]);
             $file = $request->file('file');
             $extension = $file->getClientOriginalExtension();
             $filename = uniqid() . '.' . $extension;

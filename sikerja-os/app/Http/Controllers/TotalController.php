@@ -43,7 +43,7 @@ class TotalController extends Controller
             abort(403);
         }
 
-        return view('admin.test2', [
+        return view('dashboard.test', [
             'title' => 'Lihat Kinerja',
             'active' => 'kinerja',
             'name' => User::where('id', '=', $user->id)->get('name'),

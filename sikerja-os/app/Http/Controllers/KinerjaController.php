@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class KinerjaController extends Controller
 {
@@ -95,11 +96,19 @@ class KinerjaController extends Controller
         if (auth()->guest()) {
             abort(403);
         }
-        $tgl_sever = now();
-        $waktu_mulai = $request->get('tgl_mulai') + " " + $request->get('jam_mulai');
-        $waktu_selesai = $request->get('tgl_selesai') + " " + $request->get('jam_selesai');
+        $waktuMulai = $request->get('tgl_mulai') . " " . $request->get('jam_mulai');
+        $waktuSelesai = $request->get('tgl_selesai') . " " . $request->get('jam_selesai');
 
-        $diff = $waktu_selesai - $waktu_mulai;
+        $jamKerja = $this->hitung_jam_kerja($waktuMulai, $waktuSelesai);
+
+        if ($this->validasi_time_traveller($waktuMulai) || $this->validasi_time_traveller($waktuSelesai)) {
+            return redirect()->back()->withInput()->with('danger', 'Waktu yang diinput tidak boleh melebihi waktu sekarang');
+        }
+
+        if ($jamKerja < 0) {
+            return redirect()->back()->withInput()->with('danger', 'Waktu selesai tidak boleh kurang dari waktu mulai');
+        }
+
         $validatedData['id_user'] = auth()->user()->id;
         $validatedData['id_sub'] = auth()->user()->id_sub;
         $validatedData['id_status'] = $request->get('id_status');
@@ -109,6 +118,9 @@ class KinerjaController extends Controller
         $validatedData['jam_mulai'] = $request->get('jam_mulai');
         $validatedData['jam_selesai'] = $request->get('jam_selesai');
         if ($request->hasFile('file')) {
+            $request->validate([
+                'file' => 'mimes:jpeg,png,jpg,pdf',
+            ]);
             $file = $request->file('file');
             $extension = $file->getClientOriginalExtension();
             $filename = uniqid() . '.' . $extension;
@@ -169,6 +181,19 @@ class KinerjaController extends Controller
         if (auth()->guest()) {
             abort(403);
         }
+
+        $waktuMulai = $request->get('tgl_mulai') . " " . $request->get('jam_mulai');
+        $waktuSelesai = $request->get('tgl_selesai') . " " . $request->get('jam_selesai');
+
+        $jamKerja = $this->hitung_jam_kerja($waktuMulai, $waktuSelesai);
+
+        if ($this->validasi_time_traveller($waktuMulai) || $this->validasi_time_traveller($waktuSelesai)) {
+            return redirect()->back()->withInput()->with('danger', 'Waktu yang diinput tidak boleh melebihi waktu sekarang');
+        }
+
+        if ($jamKerja < 0) {
+            return redirect()->back()->withInput()->with('danger', 'Waktu selesai tidak boleh kurang dari waktu mulai');
+        }
         $validatedData = $request->validate([
             'kinerja' => 'required',
             'tgl_mulai' => 'required',
@@ -216,5 +241,52 @@ class KinerjaController extends Controller
 
         Kinerja::destroy($kinerja->id);
         return redirect('/kinerja')->with('success', 'Kinerja Berhasil dihapus!');
+    }
+
+    public function print(Kinerja $kinerja)
+    {
+        if (auth()->guest()) {
+            abort(403);
+        }
+        return view('kinerja.print', [
+            'kinerja' => Kinerja::all(),
+            'title' => 'Edit Kinerja',
+            'user' => User::all(),
+            'jabatan' => Jabatan::all(),
+            'status' => Status::all(),
+            'unit' => Unit::where('id', auth()->user()->id_unit)->get(),
+            'subdit' => Subdit::all(),
+            'level' => Level::all(),
+            'active' => 'Edit',
+            'hitung' => Hitung::all()
+        ]);
+    }
+
+    public function halaman(Request $request)
+    {
+        if (auth()->guest()) {
+            abort(403);
+        }
+
+        $month = $request->input('monthOption');
+        $year = $request->input('yearOption');
+        $yearmonth = $year . "-" . $month . "%";
+        $data = [];
+        $data = Kinerja::where('tgl_mulai', 'LIKE', $yearmonth)->get();
+
+        return view('kinerja.halaman', [
+            'kinerja' => $data,
+            'title' => 'Edit Kinerja',
+            'user' => User::all(),
+            'jabatan' => Jabatan::all(),
+            'status' => Status::all(),
+            'unit' => Unit::where('id', auth()->user()->id_unit)->get(),
+            'subdit' => Subdit::all(),
+            'level' => Level::all(),
+            'active' => 'Edit',
+            'hitung' => Hitung::all(),
+            'bulan' => $month,
+            'tahun' => $year,
+        ]);
     }
 }

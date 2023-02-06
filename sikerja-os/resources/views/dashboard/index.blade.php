@@ -52,9 +52,6 @@
                         </div>
                         <div class="card-body">
                             <h2 class="text text-bold text-center">
-                                @if ($belum === 0)
-                                    0
-                                @endif
                                 {{ $belum }}
                             </h2>
                         </div>

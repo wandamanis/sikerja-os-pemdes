@@ -38,10 +38,11 @@
                             @endif
                             @foreach ($user as $u)
                                 @if (auth()->user()->id_sub == $u->id_sub)
-                                    @if (auth()->user()->id != $u->id)
+                                    @if (auth()->user()->id == $u->id)
                                         <button data-toggle="modal"
                                             data-target="#lihat{{ $u->id }}"class="btn btn-default">
                                             <i class="fas fa-eye"></i>{{ $u->name }}</button>
+                                        @break
                                     @endif
                                 @endif
                             @endforeach

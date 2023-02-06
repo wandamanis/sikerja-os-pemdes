@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+<<<<<<< HEAD
 use Carbon\Carbon;
+=======
+use Symfony\Component\VarDumper\VarDumper;
+>>>>>>> b452a82b31682a9b46c1094e65f44785446407ab
 
 class KinerjaController extends Controller
 {
@@ -91,11 +95,26 @@ class KinerjaController extends Controller
      * @param  \App\Http\Requests\StoreKinerjaRequest  $request
      * @return \Illuminate\Http\Response
      */
+
+    function validasi_time_traveller($waktu){
+        $format = "Y-m-d H:i";
+        $inputTimestamp = date_create_from_format($format, $waktu)->getTimestamp();
+        return $inputTimestamp > time();
+    }
+    
+    function hitung_jam_kerja($waktuMulai, $waktuSelesai) {
+        $format = "Y-m-d H:i";
+        $timestampMulai = date_create_from_format($format, $waktuMulai)->getTimestamp();
+        $timestampSelesai = date_create_from_format($format, $waktuSelesai)->getTimestamp();
+        return $timestampSelesai - $timestampMulai;
+    }      
+
     public function store(Request $request)
     {
         if (auth()->guest()) {
             abort(403);
         }
+<<<<<<< HEAD
         $waktuMulai = $request->get('tgl_mulai') . " " . $request->get('jam_mulai');
         $waktuSelesai = $request->get('tgl_selesai') . " " . $request->get('jam_selesai');
 
@@ -109,6 +128,22 @@ class KinerjaController extends Controller
             return redirect()->back()->withInput()->with('danger', 'Waktu selesai tidak boleh kurang dari waktu mulai');
         }
 
+=======
+        
+        $waktuMulai = $request->get('tgl_mulai') . " " . $request->get('jam_mulai');
+        $waktuSelesai = $request->get('tgl_selesai') . " " . $request->get('jam_selesai');
+
+        $jamKerja = $this->hitung_jam_kerja($waktuMulai, $waktuSelesai);
+        
+        if ($this->validasi_time_traveller($waktuMulai) || $this->validasi_time_traveller($waktuSelesai)) {
+            return redirect()->back()->withInput()->with('danger', 'Waktu yang diinput tidak boleh melebihi waktu sekarang');
+        }
+
+        if ($jamKerja < 0) {
+            return redirect()->back()->withInput()->with('danger', 'Waktu selesai tidak boleh kurang dari waktu mulai');
+        }
+        
+>>>>>>> b452a82b31682a9b46c1094e65f44785446407ab
         $validatedData['id_user'] = auth()->user()->id;
         $validatedData['id_sub'] = auth()->user()->id_sub;
         $validatedData['id_status'] = $request->get('id_status');

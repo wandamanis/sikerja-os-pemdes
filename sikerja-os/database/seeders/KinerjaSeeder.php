@@ -36,5 +36,16 @@ class KinerjaSeeder extends Seeder
             'jam_mulai' => '10:30',
             'jam_selesai' => '11:30',
         ]);
+
+        Kinerja::create([
+            'id_user' => 4,
+            'id_sub' => 2,
+            'id_status' => 1,
+            'kinerja' => 'Membuat Surat Nota Dinas',
+            'tgl_mulai' => '2022-02-11',
+            'tgl_selesai' => '2022-02-11',
+            'jam_mulai' => '10:30',
+            'jam_selesai' => '11:30',
+        ]);
     }
 }

@@ -2,6 +2,10 @@
 
 ## **Features**
 
+## **Requirment**
+1. ``PHP`` version ``7.3`` and ``8.0``
+2. ``Laravel`` version ``8.0``
+
 ## **Things to do First**
 1. Fetch all files & folder from git
 2. Open directory using terminal

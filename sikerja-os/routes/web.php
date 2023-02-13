@@ -67,6 +67,8 @@ Route::resource('/users', UserController::class)->middleware('superadmin');
 
 Route::resource('/kinerja', KinerjaController::class)->middleware('user');
 Route::get('/tolak/kinerja', [KinerjaController::class, 'tolak'])->middleware('user');
+Route::get('/print/kinerja', [KinerjaController::class, 'print'])->middleware('user');
+Route::post('/halaman/print/kinerja', [KinerjaController::class, 'halaman'])->middleware('user');
 
 //Route::resource('/hitung', HitungController::class)->middleware('admin');
 Route::get('/hitung/setuju/{kinerja_id}', [HitungController::class, 'setuju'])->middleware('admin');

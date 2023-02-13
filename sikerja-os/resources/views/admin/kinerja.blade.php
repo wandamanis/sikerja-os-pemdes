@@ -6,9 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h3 class="m-0">Daftar Kinerja</h3>
-                    @if (($kinerja->first()->id_sub == auth()->user()->id_sub) == $user->first()->id_sub)
-                        <h4 class="text-primary">{{ $name[0]['name'] }}</h4>
-                    @endif
+                    <h4 class="text-primary">{{ $name[0]['name'] }}</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">

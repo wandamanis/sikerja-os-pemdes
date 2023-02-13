@@ -110,14 +110,14 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="/show/admin/kinerja" class="nav-link">
                         <i class="nav-icon fas fa-file"></i>
                         <p>
                             Dashboard Kinerja
                         </p>
                     </a>
-                </li>
+                </li> --}}
             @endcan
 
             @can('superadmin')

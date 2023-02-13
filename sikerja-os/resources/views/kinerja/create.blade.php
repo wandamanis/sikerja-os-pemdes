@@ -40,12 +40,9 @@
                                 <input type="hidden" name="id_status" value="1">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Kegiatan Harian</label>
-<<<<<<< HEAD
+
                                     <textarea class="form-control" rows="3" placeholder="Isi Kegiatan Harian" name="kinerja" required autofocus
                                         id="kinerja">{{ old('kinerja') }}</textarea>
-=======
-                                    <textarea class="form-control" rows="3" placeholder="Isi Kegiatan Harian" name="kinerja" required autofocus id="kinerja">{{ old('kinerja') }}</textarea>
->>>>>>> b452a82b31682a9b46c1094e65f44785446407ab
                                     @error('kinerja')
                                         <div class="invalid-feedback">
                                             <p class="text-danger"> {{ $message }}</p>
@@ -57,12 +54,8 @@
                                         <div class="col-md-6">
                                             <label>Tanggal Mulai</label>
                                             <div class="input-group" data-target-input="nearest">
-<<<<<<< HEAD
                                                 <input type="date" class="form-control" name="tgl_mulai" id="tgl_mulai"
                                                     max="<?= date('Y-m-d') ?>" value="{{ old('tgl_mulai') }}" />
-=======
-                                                <input type="date" class="form-control" name="tgl_mulai" id="tgl_mulai" max="<?=date('Y-m-d')?>" value="{{ old('tgl_mulai') }}"/>
->>>>>>> b452a82b31682a9b46c1094e65f44785446407ab
                                             </div>
                                             @error('tgl_mulai')
                                                 <div class="invalid-feedback">
@@ -73,13 +66,9 @@
                                         <div class="col-md-6">
                                             <label>Tanggal Selesai</label>
                                             <div class="input-group" data-target-input="nearest">
-<<<<<<< HEAD
                                                 <input type="date" class="form-control"
                                                     name="tgl_selesai"id="tgl_selesai" max="<?= date('Y-m-d') ?>"
                                                     value="{{ old('tgl_selesai') }}" />
-=======
-                                                <input type="date" class="form-control" name="tgl_selesai"id="tgl_selesai" max="<?=date('Y-m-d')?>" value="{{ old('tgl_selesai') }}" />
->>>>>>> b452a82b31682a9b46c1094e65f44785446407ab
                                             </div>
                                             @error('tgl_selesai')
                                                 <div class="invalid-feedback">
@@ -94,22 +83,17 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Jam Mulai</label>
-<<<<<<< HEAD
-
                                             <div class="input-group clockpicker" id="clockpicker"
-=======
-                                            {{-- <div class="input-group"
->>>>>>> b452a82b31682a9b46c1094e65f44785446407ab
                                                 data-target-input="nearest" data-placement="top" data-align="top"
-                                                data-autoclose="true"> --}}
-                                                <input type="time" class="form-control"
-                                                    name="jam_mulai" id="jam_mulai" value="{{ old('jam_mulai') }}"  />
-                                                {{-- <div class="input-group-append" data-target="#clock"
+                                                data-autoclose="true">
+                                                <input type="time" class="form-control" name="jam_mulai" id="jam_mulai"
+                                                    value="{{ old('jam_mulai') }}" />
+                                                <div class="input-group-append" data-target="#clock"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="far fa-clock"></i>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                             @error('jam_mulai')
                                                 <div class="invalid-feedback">
                                                     <p class="text-danger"> {{ $message }}</p>
@@ -118,17 +102,17 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label>Jam Selesai</label>
-                                            {{-- <div class="input-group"
+                                            <div class="input-group clockpicker" id="clockpicker"
                                                 data-target-input="nearest" data-placement="top" data-align="top"
-                                                data-autoclose="true"> --}}
-                                                <input type="time" class="form-control"
-                                                    name="jam_selesai" id="jam_selesai" value="{{ old('jam_selesai') }}"  />
-                                                {{-- <div class="input-group-append" data-target="#clock"
+                                                data-autoclose="true">
+                                                <input type="time" class="form-control" name="jam_selesai"
+                                                    id="jam_selesai" value="{{ old('jam_selesai') }}" />
+                                                <div class="input-group-append" data-target="#clock"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="far fa-clock"></i>
                                                     </div>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                             @error('jam_selesai')
                                                 <div class="invalid-feedback">
                                                     <p class="text-danger"> {{ $message }}</p>
@@ -143,7 +127,7 @@
                                     <div class="custom-file">
                                         <input type="file"
                                             class="custom-file-input @error('file') is-invalid @enderror" id="InputFile"
-                                            name="file" accept=".pdf,.jpg,.jpeg,.png" >
+                                            name="file" accept=".pdf,.jpg,.jpeg,.png">
                                         <label class="custom-file-label" for="InputFile">Choose
                                             file</label>
                                     </div>

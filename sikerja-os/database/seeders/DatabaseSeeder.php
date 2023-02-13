@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Unit::create([
-            'unit' => 'SeKditjen'
+            'unit' => 'Sekretariat'
         ]);
 
         Unit::create([
@@ -122,15 +122,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Level::create([
-            'level' => 'Super Admin'
+            'level' => 'System Administrator'
         ]);
 
         Level::create([
-            'level' => 'Admin'
+            'level' => 'Approver'
         ]);
 
         Level::create([
-            'level' => 'User'
+            'level' => 'Employee'
         ]);
 
         Status::create([

@@ -1,15 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Jabatan;
-use App\Models\Subdit;
-use App\Models\Level;
-use App\Models\Status;
-use App\Models\Unit;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {

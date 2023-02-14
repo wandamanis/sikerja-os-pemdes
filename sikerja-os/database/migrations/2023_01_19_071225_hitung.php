@@ -33,6 +33,6 @@ class Hitung extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hitung');
+        Schema::dropIfExists('hitungs');
     }
 }

@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Subdit;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SubditSeeder extends Seeder
 {
@@ -16,46 +18,111 @@ class SubditSeeder extends Seeder
     {
         //
         $sekretariat = [
-            ['jabatan' => 'Bagian Umum'],
-            ['jabatan' => 'Bagian Keuangan'],
-            ['jabatan' => 'Bagian Perencanaan'],
-            ['jabatan' => 'Kepala Bagian Perundang-undangan'],
+            [
+                'subdit' => 'Bagian Umum',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Bagian Keuangan',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Bagian Perencanaan',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Bagian Perundang-undangan',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
         ];
 
         // dit 1
         $dit_papd = [
-            ['jabatan' => 'Subdit Fasilitasi Penataan Wilayah Desa'],
-            ['jabatan' => 'Subdit Fasilitasi Penataan Kewenangan dan Produk Hukum Desa'],
-            ['jabatan' => 'Subdit Fasilitasi Administrasi Pemerintahan Desa'],
+            [
+                'subdit' => 'Subdit Fasilitasi Penataan Wilayah Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Subdit Fasilitasi Penataan Kewenangan dan Produk Hukum Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Subdit Fasilitasi Administrasi Pemerintahan Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
         ];
 
         //dit 2
         $dit_fpkapd = [
-            ['jabatan' => 'Subdit Fasilitasi Pengelolaan Perencanaan Pembangunan Desa'],
-            ['jabatan' => 'Subdit Fasilitasi Pengelolaan Keuangan Desa'],
-            ['jabatan' => 'Subdit Fasilitasi Pengelolaan Aset Desa'],
+            [
+                'subdit' => 'Subdit Fasilitasi Pengelolaan Perencanaan Pembangunan Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Subdit Fasilitasi Pengelolaan Keuangan Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Subdit Fasilitasi Pengelolaan Aset Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
         ];
 
         //dit 3
         $dit_fklpdbpd = [
-            ['jabatan' => 'Subdit Fasilitasi Kerja Sama Desa'],
-            ['jabatan' => 'Subdit Fasilitasi Lembaga Pemerintahan Desa dan Badan Permusyawaratan Desa'],
+            [
+                'subdit' => 'Subdit Fasilitasi Kerja Sama Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Subdit Fasilitasi Lembaga Pemerintahan Desa dan Badan Permusyawaratan Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
         ];
 
         //dit 4
         $dit_flmadpkkppt = [
-            ['jabatan' => 'Subdit Fasilitasi Lembaga Kemasyarakatan dan Adat Desa'],
-            ['jabatan' => 'Subdit Fasilitasi Lembaga Pemberdayaan Kesejahteraan Keluarga'],
-            ['jabatan' => 'Subdit Fasilitasi Lembaga Pos Layanan Terpadu'],
+            [
+                'subdit' => 'Subdit Fasilitasi Lembaga Kemasyarakatan dan Adat Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Subdit Fasilitasi Lembaga Pemberdayaan Kesejahteraan Keluarga',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Subdit Fasilitasi Lembaga Pos Layanan Terpadu',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
         ];
 
         //dit 5
         $dit_pkpddepd = [
-            ['jabatan' => 'Subdit Pengembangan Kapasitas Pemerintahan Desa'],
-            ['jabatan' => 'Subdit Fasilitasi Pengelolaan Data dan Informasi Desa'],
-            ['jabatan' => 'Subdit Evaluasi Perkembangan Desa'],
+            [
+                'subdit' => 'Subdit Pengembangan Kapasitas Pemerintahan Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Subdit Fasilitasi Pengelolaan Data dan Informasi Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'subdit' => 'Subdit Evaluasi Perkembangan Desa',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
         ];
 
+        $sysadmin = [
+            [
+                'subdit' => 'SYSTEM ADMINISTRATOR',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+        ];
+
+        DB::table('subdits')->delete();
+
+        Subdit::insert($sysadmin);
+        
         Subdit::insert($sekretariat);
         Subdit::insert($dit_papd);
         Subdit::insert($dit_fpkapd);

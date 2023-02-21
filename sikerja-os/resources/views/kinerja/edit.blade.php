@@ -28,6 +28,10 @@
                                 <div class="alert alert-success col-lg-8" role="alert">
                                     {{ session('success') }}
                                 </div>
+                            @elseif (session()->has('danger'))
+                                <div class="alert alert-danger col-lg-8" role="alert">
+                                    {{ session('danger') }}
+                                </div>
                             @endif
                         </div>
                         <div class="card-body">
@@ -52,13 +56,8 @@
                                         <div class="col-md-6">
                                             <label>Tanggal Mulai</label>
                                             <div class="input-group" data-target-input="nearest">
-                                                <input type="date"
-                                                    class="form-control @error('tgl_mulai') is-invalid @enderror"
-                                                    name="tgl_mulai" value="{{ old('tgl_mulai', $kinerjas->tgl_mulai) }}"
-                                                    required />
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                </div>
+                                                <input type="date" class="form-control" name="tgl_mulai" id="tgl_mulai"
+                                                    max="<?= date('Y-m-d') ?>" value="{{ old('tgl_mulai', $kinerjas->tgl_mulai) }}" />
                                             </div>
                                             @error('tgl_mulai')
                                                 <div class="invalid-feedback">
@@ -69,13 +68,9 @@
                                         <div class="col-md-6">
                                             <label>Tanggal Selesai</label>
                                             <div class="input-group" data-target-input="nearest">
-                                                <input type="date"
-                                                    class="form-control @error('tgl_selesai') is-invalid @enderror"
-                                                    name="tgl_selesai"
-                                                    value="{{ old('tgl_selesai', $kinerjas->tgl_selesai) }}" required />
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                </div>
+                                                <input type="date" class="form-control"
+                                                    name="tgl_selesai"id="tgl_selesai" max="<?= date('Y-m-d') ?>"
+                                                    value="{{ old('tgl_selesai',$kinerjas->tgl_selesai) }}" />
                                             </div>
                                             @error('tgl_selesai')
                                                 <div class="invalid-feedback">
@@ -93,10 +88,8 @@
                                             <div class="input-group clockpicker" id="clockpicker"
                                                 data-target-input="nearest" data-placement="top" data-align="top"
                                                 data-autoclose="true">
-                                                <input type="text"
-                                                    class="form-control clockpicker-input @error('jam_mulai') is-invalid @enderror"
-                                                    name="jam_mulai" value="{{ old('jam_mulai', $kinerjas->jam_mulai) }}"
-                                                    required />
+                                                <input type="time" class="form-control" name="jam_mulai" id="jam_mulai"
+                                                    value="{{ old('jam_mulai',$kinerjas->jam_mulai) }}" />
                                                 <div class="input-group-append" data-target="#clock"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="far fa-clock"></i>
@@ -114,10 +107,8 @@
                                             <div class="input-group clockpicker" id="clockpicker"
                                                 data-target-input="nearest" data-placement="top" data-align="top"
                                                 data-autoclose="true">
-                                                <input type="text"
-                                                    class="form-control clockpicker-input @error('jam_selesai') is-invalid @enderror"
-                                                    name="jam_selesai"
-                                                    value="{{ old('jam_selesai', $kinerjas->jam_selesai) }}" required />
+                                                <input type="time" class="form-control" name="jam_selesai"
+                                                    id="jam_selesai" value="{{ old('jam_selesai',$kinerjas->jam_selesai) }}" />
                                                 <div class="input-group-append" data-target="#clock"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="far fa-clock"></i>
@@ -156,4 +147,18 @@
                         </div>
                     </div>
     </section>
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/dist/bootstrap-clockpicker.min.css">
+
+    <script type="text/javascript" src="../../plugins/dist/bootstrap-clockpicker.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/dist/jquery-clockpicker.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../plugins/dist/bootstrap-clockpicker.min.js"></script>
+    <script type="text/javascript">
+        $('.clockpicker').clockpicker();
+    </script>
+
+
 @endsection

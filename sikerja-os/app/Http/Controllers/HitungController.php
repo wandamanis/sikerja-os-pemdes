@@ -114,7 +114,7 @@ class HitungController extends Controller
     {
         $kinerja = Kinerja::where('id', $kinerja_id)->get();
 
-        $selesai = strtotime($kinerja[0]['tgl_selesai'] . ' ' . $kinerja[0]['jam_selesai'] . ':00');
+        $selesai = strtotime($kinerja[0]['tgl_selesai'] . ' ' . $kinerja[0]['jam_selesai'] . ':00'); //02 02 2023 14:02:00 -> dd mm yyyy HH:mm:ss
         $mulai = strtotime($kinerja[0]['tgl_mulai'] . ' ' . $kinerja[0]['jam_mulai'] . ':00');
         $diff = round(abs($selesai - $mulai) / 60, 2);
         $d = floor($diff / 1440);

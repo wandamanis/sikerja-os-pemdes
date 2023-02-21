@@ -99,7 +99,7 @@ class KinerjaController extends Controller
         $waktuMulai = $request->get('tgl_mulai') . " " . $request->get('jam_mulai');
         $waktuSelesai = $request->get('tgl_selesai') . " " . $request->get('jam_selesai');
 
-        $jamKerja = $this->hitung_jam_kerja($waktuMulai, $waktuSelesai);
+        $jamKerja = $this->hitung_jam_kerja($waktuSelesai, $waktuMulai);
 
         if ($this->validasi_time_traveller($waktuMulai) || $this->validasi_time_traveller($waktuSelesai)) {
             return redirect()->back()->withInput()->with('danger', 'Waktu yang diinput tidak boleh melebihi waktu sekarang');
@@ -194,6 +194,7 @@ class KinerjaController extends Controller
         if ($jamKerja < 0) {
             return redirect()->back()->withInput()->with('danger', 'Waktu selesai tidak boleh kurang dari waktu mulai');
         }
+        
         $validatedData = $request->validate([
             'kinerja' => 'required',
             'tgl_mulai' => 'required',
@@ -289,4 +290,25 @@ class KinerjaController extends Controller
             'tahun' => $year,
         ]);
     }
+
+    public function hitung_jam_kerja($waktuSelesai, $waktuMulai){
+        // harusnya dibagi 60
+        // karena return masih menit
+
+        $start_hour = strtotime($waktuMulai);
+        $end_hour = strtotime($waktuSelesai);
+
+        $delta_time = $end_hour - $start_hour;
+
+        return $delta_time;
+    }
+
+    public function validasi_time_traveller($waktu){
+        if($waktu > Carbon::now(('GMT+7'))){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
 }

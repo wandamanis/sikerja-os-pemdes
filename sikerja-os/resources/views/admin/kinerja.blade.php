@@ -50,7 +50,6 @@
                                 @if (($k->id_sub == auth()->user()->id_sub) == $user->first()->id_sub)
                                     @if ($k->id_status === 1)
                                         <tr>
-                                            {{-- <td style="width:2%;">{{ $loop->iteration }}</td> --}}
                                             <td>{{ $k->kinerja }}</td>
                                             <td>{{ $k->tgl_mulai }}</td>
                                             <td>{{ $k->tgl_selesai }} </td>

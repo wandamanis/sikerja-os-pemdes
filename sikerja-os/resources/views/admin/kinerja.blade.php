@@ -23,19 +23,19 @@
             <div class="card card-white">
                 <div class="card-body" style="overflow-x:auto;">
                     @if (session()->has('success'))
-                        <div class="alert alert-success col-lg-8" role="alert">
+                        <div class="alert alert-success" role="alert">
                             {{ session('success') }}
                         </div>
                     @endif
                     @if (session()->has('reject'))
-                        <div class="alert alert-danger col-lg-8" role="alert">
+                        <div class="alert alert-danger" role="alert">
                             {{ session('reject') }}
                         </div>
                     @endif
                     <table id="example3" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                {{-- <th>No</th> --}}
                                 <th>Deskripsi Kegiatan</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
@@ -48,42 +48,43 @@
                         <tbody>
                             @foreach ($kinerja as $k)
                                 @if (($k->id_sub == auth()->user()->id_sub) == $user->first()->id_sub)
-                                    <tr>
-                                        <td style="width:2%;">{{ $loop->iteration }}</td>
-                                        <td>{{ $k->kinerja }}</td>
-                                        <td>{{ $k->tgl_mulai }}</td>
-                                        <td>{{ $k->tgl_selesai }} </td>
-                                        <td>{{ $k->jam_mulai }}</td>
-                                        <td>{{ $k->jam_selesai }}</td>
-                                        <td>
-                                            @if ($k->file)
-                                                <a href="/storage/kinerja-file/{{ $k->file }}" target="_blank"
-                                                    class="btn btn-primary btn-sm">
-                                                    <i class="fas fa-eye"></i></a>
-                                            @else
-                                                <p>No File</p>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($k->id_status === 1)
-                                                <a href="/hitung/setuju/{{ $k->id }}"
-                                                    class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
+                                    @if ($k->id_status === 1)
+                                        <tr>
+                                            {{-- <td style="width:2%;">{{ $loop->iteration }}</td> --}}
+                                            <td>{{ $k->kinerja }}</td>
+                                            <td>{{ $k->tgl_mulai }}</td>
+                                            <td>{{ $k->tgl_selesai }} </td>
+                                            <td>{{ $k->jam_mulai }}</td>
+                                            <td>{{ $k->jam_selesai }}</td>
+                                            <td>
+                                                @if ($k->file)
+                                                    <a href="/storage/kinerja-file/{{ $k->file }}" target="_blank"
+                                                        class="btn btn-primary btn-sm">
+                                                        <i class="fas fa-eye"></i></a>
+                                                @else
+                                                    <p>No File</p>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                {{-- <a href="/hitung/setuju/{{ $k->id }}"
+                                                    class="btn btn-success btn-sm"><i class="fas fa-check"></i></a> --}}
+                                                    
+                                                <button class="btn btn-success btn-sm" data-toggle="modal"
+                                                    data-target="#tambah{{ $k->id }}"><i
+                                                        class="fas fa-check">Setujui</i></button>
+
                                                 <button class="btn btn-danger btn-sm" data-toggle="modal"
                                                     data-target="#tolak{{ $k->id }}"><i
-                                                        class="fas fa-eject"></i></button>
-                                                {{-- <a href="/hitung/tolak/{{ $k->id }}"
-                                                    class="btn btn-danger btn-sm"><i class="fas fa-eject"
-                                                        onclick="coment()"></i></a> --}}
-                                            @else
-                                            @endif
-                                        </td>
+                                                        class="fas fa-times">Tolak</i></button>
+                                            </td>
+                                    @endif
                                     </tr>
                                 @endif
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>No</th>
+                                {{-- <th>No</th> --}}
                                 <th>Deskripsi Kegiatan</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
@@ -127,13 +128,14 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-primary">Tolak Kinerja</button>
+                            <button type="submit" class="btn btn-primary">Setujui</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     @endforeach
+
     {{-- Modal Comment Tolak Kinerja --}}
     @foreach ($kinerja as $k)
         <div class="modal fade" id="tolak{{ $k->id }}">

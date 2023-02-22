@@ -71,8 +71,8 @@ Route::get('/print/kinerja', [KinerjaController::class, 'print'])->middleware('u
 Route::post('/halaman/print/kinerja', [KinerjaController::class, 'halaman'])->middleware('user');
 
 //Route::resource('/hitung', HitungController::class)->middleware('admin');
-Route::get('/hitung/setuju/{kinerja_id}', [HitungController::class, 'setuju'])->middleware('admin');
-Route::get('/hitung/tolak/{kinerja}', [HitungController::class, 'tolak'])->middleware('admin');
+Route::post('/hitung/setuju/{kinerja_id}', [HitungController::class, 'setuju'])->middleware('admin');
+Route::post('/hitung/tolak/{kinerja}', [HitungController::class, 'tolak'])->middleware('admin');
 
 Route::resource('/profil', ProfilController::class)->middleware('auth');
 

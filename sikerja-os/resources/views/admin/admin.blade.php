@@ -45,11 +45,9 @@
                                                         {{ $u->name }}
                                                     </td>
                                                     <td style="width:2%;">
-                                                        @if ($kinerja->first()->id_user == $u->id)
-                                                            {{ $belum }}
-                                                        @else
-                                                            -
-                                                        @endif
+                                                        {{ 
+                                                            $result = count($kinerja->where('id_user',$u->id)->where('id_status',1));
+                                                        }}
                                                     </td>
                                                     <td style="width:2%;">
                                                         <a href="/admin/lihat-kinerja/{{ $u->id }}"

@@ -92,7 +92,7 @@
             @endif
             @can('admin')
                 <li class="nav-item">
-                    <a href="/admin" class="nav-link {{ Request::is('dashboard*') ? 'active' : '' }}">
+                    <a href="/admin" class="nav-link {{ Request::is('admin*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard

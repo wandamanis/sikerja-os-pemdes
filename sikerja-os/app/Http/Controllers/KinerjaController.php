@@ -185,7 +185,7 @@ class KinerjaController extends Controller
         $waktuMulai = $request->get('tgl_mulai') . " " . $request->get('jam_mulai');
         $waktuSelesai = $request->get('tgl_selesai') . " " . $request->get('jam_selesai');
 
-        $jamKerja = $this->calculateWorkingTime($waktuMulai, $waktuSelesai);
+        $jamKerja = $this->calculateWorkingTime($waktuSelesai, $waktuMulai);
 
         if ($this->isMoreThanNow($waktuMulai) || $this->isMoreThanNow($waktuSelesai)) {
             return redirect()->back()->withInput()->with('danger', 'Waktu yang diinput tidak boleh melebihi waktu sekarang');

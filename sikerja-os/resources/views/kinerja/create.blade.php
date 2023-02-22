@@ -55,11 +55,6 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <div class="col-md-6">
@@ -168,8 +163,9 @@
     <link rel="stylesheet" type="text/css" href="../../plugins/dist/bootstrap-clockpicker.min.css">
     <link rel="stylesheet" type="text/css" href="../../plugins/dist/jquery-clockpicker.css">
    
-    <script type="text/javascript" src="../../plugins/dist/bootstrap-clockpicker.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../../plugins/dist/bootstrap-clockpicker.min.js"></script>
     <script type="text/javascript" src="../../plugins/dist/bootstrap-clockpicker.min.js"></script>
     
     <script type="text/javascript">

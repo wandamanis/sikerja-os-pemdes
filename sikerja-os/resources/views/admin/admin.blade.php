@@ -45,9 +45,7 @@
                                                         {{ $u->name }}
                                                     </td>
                                                     <td style="width:2%;">
-                                                        {{ 
-                                                            $result = count($kinerja->where('id_user',$u->id)->where('id_status',1));
-                                                        }}
+                                                        {{ $result = count($kinerja->where('id_user', $u->id)->where('id_status', 1)) }}
                                                     </td>
                                                     <td style="width:2%;">
                                                         <a href="/admin/lihat-kinerja/{{ $u->id }}"

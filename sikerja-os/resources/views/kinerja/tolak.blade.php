@@ -29,7 +29,6 @@
                     <table id="example1" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>No</th>
                                 <th>Deskripsi Kegiatan</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
@@ -37,13 +36,13 @@
                                 <th>Jam Selesai</th>
                                 <th>Status</th>
                                 <th>File</th>
+                                <th>Komentar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($kinerja as $k)
                                 @if ($k->id_status === 3)
                                     <tr>
-                                        <td style="width:2%;">{{ $loop->iteration }}</td>
                                         <td>{{ $k->kinerja }}</td>
                                         <td>{{ $k->tgl_mulai }}</td>
                                         <td>{{ $k->tgl_selesai }} </td>
@@ -64,13 +63,13 @@
                                             @else
                                             @endif
                                         </td>
+                                        <td>{{ $k->comment }}</td>
                                     </tr>
                                 @endif
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>No</th>
                                 <th>Deskripsi Kegiatan</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
@@ -78,6 +77,7 @@
                                 <th>Jam Selesai</th>
                                 <th>Status</th>
                                 <th>File</th>
+                                <th>Komentar</th>
                             </tr>
                         </tfoot>
                     </table>

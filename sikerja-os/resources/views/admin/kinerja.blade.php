@@ -35,7 +35,6 @@
                     <table id="example3" class="table table-bordered">
                         <thead>
                             <tr>
-                                {{-- <th>No</th> --}}
                                 <th>Deskripsi Kegiatan</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
@@ -67,7 +66,7 @@
                                             <td>
                                                 {{-- <a href="/hitung/setuju/{{ $k->id }}"
                                                     class="btn btn-success btn-sm"><i class="fas fa-check"></i></a> --}}
-                                                    
+
                                                 <button class="btn btn-success btn-sm" data-toggle="modal"
                                                     data-target="#tambah{{ $k->id }}"><i
                                                         class="fas fa-check">Setujui</i></button>
@@ -83,7 +82,6 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                {{-- <th>No</th> --}}
                                 <th>Deskripsi Kegiatan</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>

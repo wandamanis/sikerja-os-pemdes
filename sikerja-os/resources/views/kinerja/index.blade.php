@@ -22,7 +22,7 @@
             <div class="card card-white">
                 <div class="card-body" style="overflow-x:auto;">
                     @if (session()->has('success'))
-                        <div class="alert alert-success col-lg-8" role="alert">
+                        <div class="alert alert-success" role="alert">
                             {{ session('success') }}
                         </div>
                     @endif

@@ -151,6 +151,6 @@ class HitungController extends Controller
         $temp2['comment'] = $request->get('comment');
         Kinerja::where('id', $kinerja->id)->update($temp2);
 
-        return back()->with('success', 'Persetujuan Berhasil !');
+        return back()->with('success', 'Kinerja telah ditolak.');
     }
 }

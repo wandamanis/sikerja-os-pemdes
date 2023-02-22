@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="nav-item menu-open">
-                    <a href="/kinerja" class="nav-link {{ Request::is('kinerja*') ? 'active' : '' }}">
+                    <a href="/kinerja" class="nav-link">
                         <i class="nav-icon fas fa-briefcase"></i>
                         <p>
                             Kinerja
@@ -63,21 +63,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/kinerja" class="nav-link {{ Request::is('kinerja*') ? 'active' : '' }}">
+                            <a href="/kinerja" class="nav-link {{ Request::is('kinerja') ? 'active' : '' }}">
                                 <i class="fas fa-th nav-icon"></i>
                                 <p>Lihat Kinerja</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/kinerja/create"
-                                class="nav-link {{ Request::is('/kinerja/create') ? 'active' : '' }}">
+                                class="nav-link {{ Request::is('kinerja/create') ? 'active' : '' }}">
                                 <i class="fas fa-plus nav-icon"></i>
                                 <p>Tambah Kinerja</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/tolak/kinerja"
-                                class="nav-link {{ Request::is('/tolak/kinerja') ? 'active' : '' }}">
+                                class="nav-link {{ Request::is('tolak/kinerja') ? 'active' : '' }}">
                                 <i class="fas fa-eject nav-icon"></i>
                                 <p>Kinerja Ditolak</p>
                             </a>
@@ -85,7 +85,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/print/kinerja" class="nav-link">
+                    <a href="/print/kinerja" class="nav-link {{ Request::is('print/kinerja') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-file"></i>
                         <p>
                             Laporan
@@ -172,7 +172,7 @@
             @endcan
             <li class="nav-header">PROFIL</li>
             <li class="nav-item">
-                <a href="/profil/{{ auth()->user()->id }}" class="nav-link">
+                <a href="/profil/{{ auth()->user()->id }}" class="nav-link {{ Request::is('profil/') ? 'active' : '' }}">
                     <i class="nav-icon far fa-user"></i>
                     <p>
                         Lihat Profil
@@ -180,7 +180,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/profil/ubah-password/{{ auth()->user()->id }}" class="nav-link">
+                <a href="/profil/ubah-password/{{ auth()->user()->id }}" class="nav-link {{ Request::is('profil/ubah-password/*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-key"></i>
                     <p>
                         Ganti Password

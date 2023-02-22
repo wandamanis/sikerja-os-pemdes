@@ -245,8 +245,8 @@
                     </table>
                 </div>
             </div>
-
-            <div class="row row4">
+            {{-- ini di hidden dulu, nunggu arahan ada tanda tangan apa enggak --}}
+            {{-- <div class="row row4">
                 <div class="position-relative" style="max-width: 91%;">
                     <div class="position-absolute bottom-0 end-0">
                         <h5 class="nama">
@@ -275,7 +275,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
